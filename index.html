@@ -983,7 +983,7 @@
 
     <!-- Floating Dock Menu -->
     <nav class="floating-dock">
-        <a href="#" class="dock-item active">
+        <a href="#" class="dock-item active" onclick="scrollToSection('topSection'); return false;">
             <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             Нүүр
         </a>
@@ -992,6 +992,16 @@
             Загварууд
         </a>
     </nav>
+
+    <!-- Хөгжим асаах/унтраах товчлуур -->
+    <button onclick="toggleMusic()" id="musicBtn" class="music-toggle-btn" title="Хөгжим тоглуулах">
+        🎵
+    </button>
+
+    <!-- Дээш буцах сумтай товч -->
+    <a href="#" class="back-to-top" id="backToTopBtn" title="Эхлэл рүү очих">
+        <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </a>
 
     <script>
         function scrollToSection(sectionId) {
@@ -1033,4 +1043,68 @@
                 
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 30 + Math.random() * 50;
-                const dx = Math.
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+
+                star.style.setProperty('--dx', dx + 'px');
+                star.style.setProperty('--dy', dy + 'px');
+
+                star.style.left = e.clientX + 'px';
+                star.style.top = e.clientY + 'px';
+                
+                document.body.appendChild(star);
+
+                setTimeout(() => {
+                    star.remove();
+                }, 700);
+            }
+        });
+
+        // Хайлтын функц
+        function filterInvitations() {
+            let input = document.getElementById('searchInput').value.toLowerCase().trim();
+            let sections = document.querySelectorAll('.invitation-section');
+            let categoriesHeading = document.getElementById('categoriesHeading');
+            let categoriesGrid = document.getElementById('categoriesGrid');
+
+            if (input === "") {
+                categoriesHeading.style.display = "block";
+                categoriesGrid.style.display = "grid";
+                sections.forEach(sec => sec.style.display = "block");
+                return;
+            }
+
+            categoriesHeading.style.display = "none";
+            categoriesGrid.style.display = "none";
+
+            sections.forEach(sec => {
+                let name = sec.getAttribute('data-name');
+                if (name.includes(input)) {
+                    sec.style.display = "block";
+                } else {
+                    sec.style.display = "none";
+                }
+            });
+        }
+
+        // Дээш буцах сумтай товчлуур ажиллах логик
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
