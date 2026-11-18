@@ -518,6 +518,27 @@
             transform: scale(0.9);
         }
 
+        /* Хөгжим асаах/унтраах товчлуур (Баруун доод буланд) */
+        .music-toggle-btn {
+            position: fixed;
+            bottom: 85px;
+            left: 20px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #ef4444, #991b1b);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+            z-index: 999;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
         /* Захиалга болон холбогдох хэсэг */
         .order-btn-box {
             background: rgba(127, 29, 29, 0.45) !important;
@@ -620,6 +641,16 @@
     </style>
 </head>
 <body>
+
+    <!-- Арын хөгжим (Та src="" дотор mp3 дууныхаа холбоосыг тавина уу) -->
+    <audio id="bgMusic" loop>
+        <source src="" type="audio/mp3">
+    </audio>
+
+    <!-- Хөгжим асаах/унтраах товчлуур -->
+    <button onclick="toggleMusic()" id="musicBtn" class="music-toggle-btn" title="Хөгжим тоглуулах">
+        🎵
+    </button>
 
     <!-- Гялалзсан од, оч будрах эффект -->
     <div class="sparkles-container" aria-hidden="true">
@@ -959,6 +990,21 @@
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Хөгжим асаах, унтраах функц
+        function toggleMusic() {
+            var music = document.getElementById("bgMusic");
+            var btn = document.getElementById("musicBtn");
+            if (music.paused) {
+                music.play();
+                btn.style.transform = "scale(1.15) rotate(360deg)";
+                btn.innerHTML = "🔊";
+            } else {
+                music.pause();
+                btn.style.transform = "scale(1)";
+                btn.innerHTML = "🎵";
             }
         }
 
