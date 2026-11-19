@@ -434,6 +434,12 @@
         .v-card.meeting .video-badge { border: 2px solid #c4b5fd !important; background: rgba(30, 10, 50, 0.95) !important; }
         .v-card.meeting .v-card-info { background: #3b0764 !important; }
 
+        /* Дарж нээгддэг урилга стилиуд */
+        .cat-clickable, .v-card.clickable { background: rgba(180, 83, 9, 0.45) !important; border: 1px solid rgba(251, 191, 36, 0.65) !important; }
+        .v-card.clickable .v-card-media { background: radial-gradient(circle at center, rgba(251, 191, 36, 0.45) 0%, rgba(56, 12, 28, 0.95) 100%), linear-gradient(135deg, #b45309, #421326) !important; }
+        .v-card.clickable .video-badge { border: 2px solid #fcd34d !important; background: rgba(56, 12, 28, 0.95) !important; }
+        .v-card.clickable .v-card-info { background: #450a0a !important; }
+
         /* Floating Dock Menu */
         .floating-dock {
             position: fixed;
@@ -734,6 +740,10 @@
                 <span class="cat-icon">🎓</span>
                 <span class="cat-name">Ангийн ойн уулзалт</span>
             </div>
+            <div class="cat-card cat-clickable" onclick="scrollToSection('clickableInviteSection')">
+                <span class="cat-icon">💌</span>
+                <span class="cat-name">Дарж нээгддэг урилга</span>
+            </div>
         </div>
 
         <!-- Бодит загварууд (Хайлтаар шүүгдэх хэсэг) -->
@@ -951,6 +961,23 @@
                     <div class="v-card-info">
                         <span class="v-card-title">Ангийн ойн уулзалт - 1</span>
                         <a href="https://www.facebook.com/share/r/14uqvnEog76/?mibextid=wwXIfr" target="_blank" class="mini-action-btn">Үзэх ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дарж нээгддэг урилга хэсэг -->
+        <div class="invitation-section" data-name="дарж нээгддэг урилга алдарт эх алдарт эхийн одон дугтуйтай урилга">
+            <div id="clickableInviteSection" class="section-heading" style="margin-top: 10px;">💌 Дарж нээгддэг урилга</div>
+            <div class="v-card-slider">
+                <div class="v-card clickable">
+                    <div class="v-card-media">
+                        <div class="video-badge"><span class="video-badge-icon">💌</span><span class="video-badge-text">WEB</span></div>
+                        <span style="font-size: 12px; color: #fde68a; font-weight: 700;">Алдарт эхийн одон</span>
+                    </div>
+                    <div class="v-card-info">
+                        <span class="v-card-title">Алдарт эхийн 2-р одон</span>
+                        <a href="https://aldartehiin.vercel.app/" target="_blank" class="mini-action-btn">Үзэх ↗</a>
                     </div>
                 </div>
             </div>
