@@ -29,10 +29,10 @@
         }
 
         body {
-            background-color: #1a4a8a !important;
-            background: linear-gradient(160deg, #0f3d7a, #1b6f9c, #5a3fa3, #b23a7a, #5a3fa3, #1b6f9c, #0f3d7a) !important;
-            background-size: 100% 400% !important;
-            animation: bgShiftV 28s ease-in-out infinite;
+            background-color: #b71c1c !important;
+            background: linear-gradient(160deg, #d32f2f, #b71c1c, #8e1534, #b71c1c, #d32f2f) !important;
+            background-size: 100% 300% !important;
+            animation: bgShiftV 26s ease-in-out infinite;
             color: #F1F5F0 !important;
             min-height: 100vh;
             display: flex;
@@ -59,58 +59,79 @@
             z-index: 0;
         }
 
-        /* Доороос дээш хөвөх бөмбөлгүүд */
-        .bg-bubble {
+        /* Дээд талын анивчдаг гэрлэн цэцэг (гирлянд) */
+        .garland {
             position: absolute;
-            bottom: -80px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            animation: bubbleRise linear infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='48' viewBox='0 0 92 48'%3E%3Cpath d='M0,4 Q46,40 92,4' fill='none' stroke='%23300710' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
         }
 
-        @keyframes bubbleRise {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            50% { transform: translateY(-55vh) translateX(var(--sway)); }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-120vh) translateX(0); opacity: 0; }
+        .bulb {
+            position: absolute;
+            width: 10px;
+            height: 14px;
+            border-radius: 50% 50% 55% 55%;
+            animation: bulbBlink 1.8s ease-in-out infinite alternate;
         }
 
-        /* Зөөлөн унах цуглуулга (confetti) */
-        .bg-confetti {
+        @keyframes bulbBlink {
+            from { opacity: 0.45; box-shadow: 0 0 3px currentColor; }
+            to { opacity: 1; box-shadow: 0 0 14px 4px currentColor; }
+        }
+
+        /* Цас */
+        .snowflake {
             position: absolute;
             top: -20px;
-            opacity: 0.85;
-            animation: confettiFall linear infinite;
+            color: #ffffff;
+            line-height: 1;
+            opacity: 0.9;
+            animation: snowFall linear infinite;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
         }
 
-        @keyframes confettiFall {
+        @keyframes snowFall {
             0% { transform: translateY(0) translateX(0) rotate(0deg); }
-            50% { transform: translateY(55vh) translateX(var(--sway)) rotate(360deg); }
-            100% { transform: translateY(115vh) translateX(0) rotate(720deg); }
+            50% { transform: translateY(55vh) translateX(var(--sway)) rotate(180deg); }
+            100% { transform: translateY(115vh) translateX(0) rotate(360deg); }
         }
 
-        /* Доод талын долгион */
-        .bg-wave {
+        /* Доод талын цасан толгод болон шинэ жилийн гацуур */
+        .snow-hills {
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 200%;
-            height: 170px;
-            animation: waveMove linear infinite;
+            width: 100%;
+            height: 110px;
         }
 
-        .bg-wave.w1 { opacity: 0.18; animation-duration: 22s; height: 190px; }
-        .bg-wave.w2 { opacity: 0.14; animation-duration: 32s; animation-direction: reverse; height: 140px; }
+        .xmas-tree {
+            position: absolute;
+            bottom: 18px;
+            opacity: 0.55;
+        }
 
-        @keyframes waveMove {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        .xmas-tree.t1 { left: 4%; width: 54px; }
+        .xmas-tree.t2 { left: 14%; width: 38px; bottom: 26px; }
+        .xmas-tree.t3 { right: 5%; width: 60px; }
+        .xmas-tree.t4 { right: 17%; width: 40px; bottom: 28px; }
+
+        .tree-star {
+            animation: starPulse 2s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+
+        @keyframes starPulse {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            body, .bg-bubble, .bg-confetti, .bg-wave { animation: none; }
+            body, .bulb, .snowflake, .tree-star { animation: none; }
         }
 
         /* Хуудас анх нээгдэхэд зөөлөн гарч ирэх үндсэн анимаци */
@@ -786,14 +807,17 @@
 </head>
 <body>
 
-    <!-- Хөдөлгөөнт дэвсгэр: долгион, бөмбөлөг, confetti -->
+    <!-- Шинэ жилийн хөдөлгөөнт дэвсгэр: гирлянд, цас, гацуур -->
     <div class="bg-fx" id="bgFx" aria-hidden="true">
-        <svg class="bg-wave w1" viewBox="0 0 2880 200" preserveAspectRatio="none">
-            <path fill="#ffffff" d="M0,100 C240,40 480,160 720,100 C960,40 1200,160 1440,100 C1680,40 1920,160 2160,100 C2400,40 2640,160 2880,100 L2880,200 L0,200 Z"/>
+        <svg class="snow-hills" viewBox="0 0 800 110" preserveAspectRatio="none">
+            <path fill="#ffffff" fill-opacity="0.28" d="M0,60 C120,20 240,90 380,55 C520,20 660,85 800,45 L800,110 L0,110 Z"/>
+            <path fill="#ffffff" fill-opacity="0.22" d="M0,80 C140,50 280,105 420,75 C560,45 680,100 800,70 L800,110 L0,110 Z"/>
         </svg>
-        <svg class="bg-wave w2" viewBox="0 0 2880 200" preserveAspectRatio="none">
-            <path fill="#ffffff" d="M0,110 C240,160 480,60 720,110 C960,160 1200,60 1440,110 C1680,160 1920,60 2160,110 C2400,160 2640,60 2880,110 L2880,200 L0,200 Z"/>
-        </svg>
+        <svg class="xmas-tree t1" viewBox="0 0 60 90"><polygon points="30,6 46,34 14,34" fill="#14532d"/><polygon points="30,22 52,56 8,56" fill="#166534"/><polygon points="30,40 58,80 2,80" fill="#14532d"/><rect x="26" y="80" width="8" height="10" fill="#451a03"/><polygon class="tree-star" points="30,0 32,5 37,5 33,8 34,13 30,10 26,13 27,8 23,5 28,5" fill="#fde047"/></svg>
+        <svg class="xmas-tree t2" viewBox="0 0 60 90"><polygon points="30,6 46,34 14,34" fill="#14532d"/><polygon points="30,22 52,56 8,56" fill="#166534"/><polygon points="30,40 58,80 2,80" fill="#14532d"/><rect x="26" y="80" width="8" height="10" fill="#451a03"/><polygon class="tree-star" points="30,0 32,5 37,5 33,8 34,13 30,10 26,13 27,8 23,5 28,5" fill="#fde047"/></svg>
+        <svg class="xmas-tree t3" viewBox="0 0 60 90"><polygon points="30,6 46,34 14,34" fill="#14532d"/><polygon points="30,22 52,56 8,56" fill="#166534"/><polygon points="30,40 58,80 2,80" fill="#14532d"/><rect x="26" y="80" width="8" height="10" fill="#451a03"/><polygon class="tree-star" points="30,0 32,5 37,5 33,8 34,13 30,10 26,13 27,8 23,5 28,5" fill="#fde047"/></svg>
+        <svg class="xmas-tree t4" viewBox="0 0 60 90"><polygon points="30,6 46,34 14,34" fill="#14532d"/><polygon points="30,22 52,56 8,56" fill="#166534"/><polygon points="30,40 58,80 2,80" fill="#14532d"/><rect x="26" y="80" width="8" height="10" fill="#451a03"/><polygon class="tree-star" points="30,0 32,5 37,5 33,8 34,13 30,10 26,13 27,8 23,5 28,5" fill="#fde047"/></svg>
+        <div class="garland" id="garland"></div>
     </div>
 
     <!-- Арын хөгжим -->
@@ -1294,38 +1318,47 @@
             }, { threshold: 0.1 }).observe(orderBox);
         }
 
-        // Дэвсгэрийн бөмбөлөг болон confetti үүсгэх
+        // Шинэ жилийн дэвсгэр: гирляндын гэрэл болон цас үүсгэх
         (function () {
             const fx = document.getElementById('bgFx');
-            if (!fx) return;
+            const garland = document.getElementById('garland');
+            if (!fx || !garland) return;
             const rand = (a, b) => a + Math.random() * (b - a);
 
-            for (let i = 0; i < 12; i++) {
-                const b = document.createElement('div');
-                const size = rand(18, 60);
-                b.className = 'bg-bubble';
-                b.style.width = b.style.height = size + 'px';
-                b.style.left = rand(0, 100) + '%';
-                b.style.animationDuration = rand(14, 26) + 's';
-                b.style.animationDelay = (-rand(0, 20)) + 's';
-                b.style.setProperty('--sway', rand(-40, 40) + 'px');
-                fx.appendChild(b);
+            // Гирлянд: 92px-ийн нэг давталт бүрд 3 гэрэл
+            const bulbColors = ['#fde047', '#4ade80', '#60a5fa', '#f9a8d4', '#ffffff'];
+            const tiles = Math.ceil(window.innerWidth / 92) + 1;
+            const offsets = [[23, 17.5], [46, 22], [69, 17.5]];
+            let n = 0;
+            for (let t = 0; t < tiles; t++) {
+                offsets.forEach(function (o) {
+                    const b = document.createElement('div');
+                    b.className = 'bulb';
+                    const color = bulbColors[n % bulbColors.length];
+                    b.style.left = (t * 92 + o[0] - 5) + 'px';
+                    b.style.top = (o[1] - 2) + 'px';
+                    b.style.background = color;
+                    b.style.color = color;
+                    b.style.animationDelay = (-rand(0, 2)) + 's';
+                    b.style.animationDuration = rand(1.2, 2.4) + 's';
+                    garland.appendChild(b);
+                    n++;
+                });
             }
 
-            const colors = ['#fde047', '#f9a8d4', '#7dd3fc', '#ffffff', '#86efac', '#fdba74'];
-            for (let i = 0; i < 20; i++) {
-                const c = document.createElement('div');
-                const w = rand(5, 9);
-                c.className = 'bg-confetti';
-                c.style.width = w + 'px';
-                c.style.height = (Math.random() > 0.5 ? w : w * 2.2) + 'px';
-                c.style.borderRadius = Math.random() > 0.6 ? '50%' : '2px';
-                c.style.background = colors[Math.floor(Math.random() * colors.length)];
-                c.style.left = rand(0, 100) + '%';
-                c.style.animationDuration = rand(12, 22) + 's';
-                c.style.animationDelay = (-rand(0, 20)) + 's';
-                c.style.setProperty('--sway', rand(-60, 60) + 'px');
-                fx.appendChild(c);
+            // Цас
+            const glyphs = ['❄', '❅', '❆', '•', '•'];
+            for (let i = 0; i < 32; i++) {
+                const f = document.createElement('div');
+                f.className = 'snowflake';
+                f.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+                f.style.left = rand(0, 100) + '%';
+                f.style.fontSize = rand(8, 22) + 'px';
+                f.style.opacity = rand(0.55, 1);
+                f.style.animationDuration = rand(9, 20) + 's';
+                f.style.animationDelay = (-rand(0, 20)) + 's';
+                f.style.setProperty('--sway', rand(-50, 50) + 'px');
+                fx.appendChild(f);
             }
         })();
 
