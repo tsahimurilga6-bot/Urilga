@@ -9,7 +9,9 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Цахим урилга - Таны баярын эхлэл">
     <meta property="og:description" content="Төрсөн өдөр, сэвлэг үргээх, шинэ байр болон бусад баярын урилгын загварууд.">
-    <meta property="og:image" content="https://i.ibb.co/dRY0n2z/IMG-9984.jpg">
+    <meta property="og:image" content="https://invite-xi-ashen.vercel.app/preview.PNG">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://amethyst-drum.vercel.app">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -603,6 +605,62 @@
             line-height: 1.4;
         }
 
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-top: 1px dashed rgba(252, 211, 77, 0.3);
+        }
+
+        .price-row:first-of-type {
+            border-top: none;
+        }
+
+        .price-label {
+            font-size: 12px;
+            color: #f1f5f9;
+        }
+
+        .price-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fde047;
+            text-shadow: 0 0 10px rgba(253, 224, 71, 0.4);
+            white-space: nowrap;
+        }
+
+        /* Тогтмол хөвөх захиалах товч */
+        .floating-order {
+            position: fixed;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 18px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0084ff, #0056b3);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 22px;
+            box-shadow: 0 6px 20px rgba(0, 132, 255, 0.55);
+            z-index: 998;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .floating-order.hide {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(10px);
+        }
+
         .main-cta {
             display: block;
             width: 100%;
@@ -726,10 +784,12 @@
                 <span class="cat-icon">🏢</span>
                 <span class="cat-name">Шинэ байрны цайллага</span>
             </div>
+            <!-- ШИНЭ БАЙШИНГИЙН ангилал: загвар нэмэгдэх үед эхний болон сүүлийн comment тэмдгийг устгана
             <div class="cat-card cat-baishing" onclick="scrollToSection('baishingSection')">
                 <span class="cat-icon">🏡</span>
                 <span class="cat-name">Шинэ байшингийн цайллага</span>
             </div>
+            -->
             <div class="cat-card cat-xmas" onclick="scrollToSection('xmasSection')">
                 <span class="cat-icon">🎄</span>
                 <span class="cat-name">Шинэ жил</span>
@@ -756,7 +816,7 @@
                 <div class="v-card xmas">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/19oPE2FyLy/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/sbkegz.png" alt="Галт тэрэгтэй загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/sbkegz.png" alt="Галт тэрэгтэй загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -768,7 +828,7 @@
                 <div class="v-card xmas">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1Q2A2LCk8C/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/pkehi7.png" alt="Гацууртай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/pkehi7.png" alt="Гацууртай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -780,7 +840,7 @@
                 <div class="v-card xmas">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/19tTwcN2PU/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/7ukde1.png" alt="Цасан ширхэгтэй загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/7ukde1.png" alt="Цасан ширхэгтэй загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -792,7 +852,7 @@
                 <div class="v-card xmas">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1AEvCPReMV/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/t5ca7l.png" alt="Дугтуйтай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/t5ca7l.png" alt="Дугтуйтай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -810,7 +870,7 @@
                 <div class="v-card tursun-huu">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/18hQV1NbdR/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/7exh7t.jpeg" alt="Baby boss загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/7exh7t.jpeg" alt="Baby boss загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -822,7 +882,7 @@
                 <div class="v-card tursun-huu">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1JVtQMVWeU/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/yf88i9.jpeg" alt="Амьтантай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/yf88i9.jpeg" alt="Амьтантай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -840,7 +900,7 @@
                 <div class="v-card tursun-ohin">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1CB4WuGQJx/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/bp6sxt.jpeg" alt="Торттой загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/bp6sxt.jpeg" alt="Торттой загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -852,7 +912,7 @@
                 <div class="v-card clickable">
                     <div class="v-card-media">
                         <a href="https://amin-erdene-birthday-invitation.vercel.app/" target="_blank" rel="noopener noreferrer" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/awn5fk.png" alt="Дарж нээгддэг загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/awn5fk.png" alt="Дарж нээгддэг загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -870,7 +930,7 @@
                 <div class="v-card sevleg-huu">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1CXfTN3ppE/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/3wd3r5.jpeg" alt="Хээтэй загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/3wd3r5.jpeg" alt="Хээтэй загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -882,7 +942,7 @@
                 <div class="v-card sevleg-huu">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1EBYj9TiJy/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/r7ecls.jpeg" alt="12жил загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/r7ecls.jpeg" alt="12жил загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -898,8 +958,9 @@
             <div class="v-card-slider">
                 <div class="v-card sevleg-ohin">
                     <div class="v-card-media">
-                        <div class="video-badge"><span class="video-badge-icon">🎬</span><span class="video-badge-text">HD</span></div>
-                        <span style="font-size: 12px; color: #fda4af; font-weight: 700;">Загвар - 1</span>
+                        <a href="https://www.facebook.com/share/r/1CSVxW8RFX/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <img loading="lazy" src="https://files.catbox.moe/21s0h7.jpeg" alt="Сэвлэг үргээх /охин/ - 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </a>
                     </div>
                     <div class="v-card-info">
                         <span class="v-card-title">Сэвлэг үргээх /охин/ - 1</span>
@@ -915,7 +976,7 @@
                 <div class="v-card bair">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1CTZEKcdCt/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/92qsd9.jpeg" alt="Дугтуйтай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/92qsd9.jpeg" alt="Дугтуйтай загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -927,11 +988,13 @@
         </div>
 
         <!-- Шинэ байшингийн цайллага хэсэг -->
+        <!-- ШИНЭ БАЙШИНГИЙН хэсэг: загвар нэмэгдэх үед эхний болон сүүлийн comment тэмдгийг устгана
         <div class="invitation-section" data-name="шинэ байшингийн цайллага байшин хашаа байшин">
             <div id="baishingSection" class="section-heading" style="margin-top: 10px;">🏡 Шинэ байшингийн цайллага</div>
             <div class="v-card-slider">
             </div>
         </div>
+        -->
 
         <!-- Золголтын урилга хэсэг -->
         <div class="invitation-section" data-name="золголтын урилга золголт цагаан сар хоньтой загвар хоньтой загвар 2">
@@ -941,7 +1004,7 @@
                 <div class="v-card zolgoltol">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1JA5cgnpxb/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/hmsgo8.jpeg" alt="Хоньтой загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/hmsgo8.jpeg" alt="Хоньтой загвар" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -953,7 +1016,7 @@
                 <div class="v-card zolgoltol">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/1DbRBeJsJB/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/0tz37m.jpeg" alt="Хоньтой загвар - 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/0tz37m.jpeg" alt="Хоньтой загвар - 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -970,7 +1033,7 @@
                 <div class="v-card meeting">
                     <div class="v-card-media">
                         <a href="https://www.facebook.com/share/r/14uqvnEog76/?mibextid=wwXIfr" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/v479bh.png" alt="Ангийн ойн уулзалт - 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/v479bh.png" alt="Ангийн ойн уулзалт - 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -988,7 +1051,7 @@
                 <div class="v-card clickable">
                     <div class="v-card-media">
                         <a href="https://aldartehiin.vercel.app" target="_blank" rel="noopener noreferrer" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/fo6jdw.png" alt="Алдарт эхийн одон" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/fo6jdw.png" alt="Алдарт эхийн одон" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -999,7 +1062,7 @@
                 <div class="v-card clickable">
                     <div class="v-card-media">
                         <a href="https://crimson-cable-six.vercel.app/" target="_blank" rel="noopener noreferrer" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://files.catbox.moe/ke4e7h.png" alt="Хуримын урилга" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img loading="lazy" src="https://files.catbox.moe/ke4e7h.png" alt="Хуримын урилга" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </a>
                     </div>
                     <div class="v-card-info">
@@ -1011,7 +1074,7 @@
         </div>
 
         <!-- Захиалга болон холбогдох хэсэг -->
-        <div class="order-btn-box">
+        <div class="order-btn-box" id="orderBox">
             <h3>Захиалга өгөх болон нөхцөл</h3>
 
             <div class="info-grid">
@@ -1021,8 +1084,14 @@
                 </div>
                 <div class="info-card">
                     <h4>💰 Төлбөр & Үнэ</h4>
-                    <p>Бэлэн загвар бүгд <strong>15'000 – 20'000₮
-Дарж нээгддэг урилга 30'000₮</strong></p>
+                    <div class="price-row">
+                        <span class="price-label">Бэлэн загвар</span>
+                        <span class="price-value">15'000 – 20'000₮</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Дарж нээгддэг урилга</span>
+                        <span class="price-value">30'000₮</span>
+                    </div>
                 </div>
             </div>
 
@@ -1035,6 +1104,9 @@
             </a>
         </div>
     </div>
+
+    <!-- Тогтмол хөвөх захиалах товч -->
+    <a href="https://www.facebook.com/share/1DvTBRbLjf/" target="_blank" class="floating-order" id="floatingOrder">💬 Захиалах</a>
 
     <!-- Floating Dock Menu -->
     <nav class="floating-dock">
@@ -1130,6 +1202,15 @@
                     sec.style.display = "none";
                 }
             });
+        }
+
+        // Захиалгын хэсэг харагдаж байхад хөвөх товчийг нуух
+        const floatingOrder = document.getElementById('floatingOrder');
+        const orderBox = document.getElementById('orderBox');
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver((entries) => {
+                entries.forEach(en => floatingOrder.classList.toggle('hide', en.isIntersecting));
+            }, { threshold: 0.1 }).observe(orderBox);
         }
 
         // Дээш буцах сумтай товчлуур ажиллах логик
